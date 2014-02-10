@@ -1,0 +1,10 @@
+#main {
+	width: 960px;
+	margin: 0 auto;
+}
+
+textarea.code {
+	width: 800px;
+	height: 350px;
+	font-family: courier new;
+}
