@@ -2,8 +2,8 @@
 namespace codegenerator\generator;
 
 
-use model\ClassEntity;
-use model\ClassMember;
+use codegenerator\model\ClassEntity;
+use codegenerator\model\ClassMember;
 
 class ClassGenerator extends AbstractGenerator
 {
@@ -81,9 +81,9 @@ class ClassGenerator extends AbstractGenerator
 
         $lines[] = '}';
 
-        $lines = array_map(function($line) {
-                return $this->getIndentation() . $line;
-        }, $lines);
+	foreach($lines as $key => $line) {
+            $lines[$key] = $this->getIndentation() . $line;
+        }
         return implode("\n", $lines);
     }
 

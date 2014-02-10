@@ -2,7 +2,7 @@
 namespace codegenerator\generator;
 
 
-use model\ClassEntity;
+use codegenerator\model\ClassEntity;
 
 abstract class AbstractGenerator
 {

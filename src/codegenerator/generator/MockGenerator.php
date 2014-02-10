@@ -2,8 +2,8 @@
 namespace codegenerator\generator;
 
 
-use model\ClassEntity;
-use model\ClassMember;
+use codegenerator\model\ClassEntity;
+use codegenerator\model\ClassMember;
 
 class MockGenerator extends AbstractGenerator
 {

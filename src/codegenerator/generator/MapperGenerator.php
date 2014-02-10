@@ -1,7 +1,7 @@
 <?php
 namespace codegenerator\generator;
 
-use model\ClassEntity;
+use codegenerator\model\ClassEntity;
 
 class MapperGenerator  extends AbstractGenerator
 {
