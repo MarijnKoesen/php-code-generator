@@ -22,8 +22,8 @@ $config = require_once('config.php');
     <div id="main">
         <h1>CodeGenerator</h1>
 
-        <?php $generator = new CodeGenerator(); ?>
-        <?php echo $generator->generateHtml(Request::getCurrentRequest(), $config['modules']); ?>
+        <?php $generator = new codegenerator\CodeGenerator(); ?>
+        <?php echo $generator->generateHtml(codegenerator\Request::getCurrentRequest(), $config['modules']); ?>
     </div>
 
     <script>

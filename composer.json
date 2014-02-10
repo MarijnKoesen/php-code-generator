@@ -1,7 +1,13 @@
 {
-    "autoload": {
-        "psr-0": {
-            "": "src/"
+    "name": "marijnkoesen/php-code-generator",
+    "description": "Code generator for PHP",
+    "authors": [
+        {
+            "name": "Marijn Koesen",
+            "email": "github@koesen.nl"
         }
+    ],
+    "autoload": {
+        "psr-0": { "codegenerator": "src/" }
     }
 }

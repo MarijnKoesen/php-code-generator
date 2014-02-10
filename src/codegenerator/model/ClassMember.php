@@ -1,5 +1,5 @@
 <?php
-namespace model;
+namespace codegenerator\model;
 
 /**
  * A class representing a class member, like 'private User $user'

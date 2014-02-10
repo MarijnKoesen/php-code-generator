@@ -1,5 +1,5 @@
 <?php
-namespace model;
+namespace codegenerator\model;
 
 use Request;
 
@@ -83,26 +83,31 @@ class ClassEntity
 
 
 
+    public static function fromDataString($dataString)
+    {
+        $expression = '([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*(\[\])?)';  // php's expression syntax: http://www.php.net/manual/en/language.oop5.basic.php, modified with optional []
+        if (preg_match_all('~[*\s]+' . $expression . ':' . $expression . '(:' . $expression . ')?+~', $dataString, $matches)) {
+            $vars = $matches[1];
+            $types = $matches[3];
+            $scopes = $matches[6];
+
+            $entity = new ClassEntity();
+            $members = self::getMembersFor($vars, $scopes, $types);
+            $entity->setMembers($members);
+
+            if (preg_match("/DATASTRING: ([a-zA-Z]+)/", $dataString, $nameMatch)) {
+                $entity->setName($nameMatch[1]);
+            }
+
+            return $entity;
+        }
+    }
 
     public static function fromRequest(Request $request)
     {
         if ($request->hasPost() && $request->getPostItem('submit') == 'From DataString') {
-            $expression = '([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*(\[\])?)';  // php's expression syntax: http://www.php.net/manual/en/language.oop5.basic.php, modified with optional []
-            if (preg_match_all('~[*\s]+' . $expression . ':' . $expression . '(:' . $expression . ')?+~', $request->getPostItem('datastring'), $matches)) {
-                $vars = $matches[1];
-                $types = $matches[3];
-                $scopes = $matches[6];
-
-                $entity = new ClassEntity();
-                $members = self::getMembersFor($vars, $scopes, $types);
-                $entity->setMembers($members);
-
-                if (preg_match("/DATASTRING: ([a-zA-Z]+)/", $request->getPostItem('datastring'), $nameMatch)) {
-                    $entity->setName($nameMatch[1]);
-                }
-
-                return $entity;
-            }
+            $dataString = $request->getPostItem('datastring');
+            return self::fromDataString($dataString);
         }
     }
 

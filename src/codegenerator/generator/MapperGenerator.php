@@ -1,6 +1,5 @@
 <?php
-namespace html;
-
+namespace codegenerator\generator;
 
 use model\ClassEntity;
 

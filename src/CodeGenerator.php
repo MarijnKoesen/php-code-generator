@@ -1,4 +1,6 @@
 <?php
+namespace codegenerator;
+
 use model\ClassEntity;
 
 class CodeGenerator
