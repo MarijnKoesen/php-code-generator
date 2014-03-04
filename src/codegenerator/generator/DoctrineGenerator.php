@@ -3,17 +3,21 @@ namespace codegenerator\generator;
 
 
 use codegenerator\model\ClassEntity;
+use codegenerator\model\ClassMember;
 
 class DoctrineGenerator extends AbstractGenerator
 {
     public function generateCode(ClassEntity $entity=null)
     {
-        $html = '<pre>';
+        if (!$entity) {
+            return "Submit your class definition first.";
+        }
 
+        $html = '<pre>';
         $html .= '$ php app/console doctrine:generate:entity --entity="YourBundle:Category" --fields="';
 
         foreach($entity->getMembers() as $member) {
-            if ($member->getType() == \model\ClassMember::MEMBER_TYPE_PROPERTY) {
+            if ($member->getType() == ClassMember::MEMBER_TYPE_PROPERTY) {
                 $html .= $member->getName() . ':' . $member->getMemberType(). " ";
             }
         }
@@ -24,7 +28,7 @@ class DoctrineGenerator extends AbstractGenerator
         $html .= '$html .= $ php app/console doctrine:generate:entity --entity="YourBundle:Category" --fields="' . "\n\t";
 
         foreach($entity->getMembers() as $member) {
-            if ($member->getType() == \model\ClassMember::MEMBER_TYPE_PROPERTY) {
+            if ($member->getType() == ClassMember::MEMBER_TYPE_PROPERTY) {
                 $html .= $member->getName() . ':' . $member->getMemberType(). " \\ \n\t";
             }
         }
