@@ -1,6 +1,10 @@
 <?php
-include('vendor/autoload.php');
+require_once('vendor/autoload.php');
 $config = require_once('config.php');
+if (file_exists('config.local.php')) {
+    $userConfig = require_once('config.local.php');
+    $config['modules'] = array_merge($config['modules'], $userConfig['modules']);
+}
 ?>
 
 <html>
@@ -32,7 +36,11 @@ $config = require_once('config.php');
             $(this).tab('show');
         });
 
-        $('.nav-tabs a[href="#class"]').tab('show');
+        var activeTab = 'Input';
+        if (window.location.href.match(/#/)) {
+            activeTab = window.location.href.replace(/.*#/, '');
+        }
+        $('.nav-tabs a[href="#' + activeTab + '"]').tab('show');
         SyntaxHighlighter.all();
     </script>
 	</body>

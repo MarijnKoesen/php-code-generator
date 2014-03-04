@@ -1,7 +1,7 @@
 <?php
 namespace codegenerator\model;
 
-use Request;
+use codegenerator\Request;
 
 
 class ClassEntity

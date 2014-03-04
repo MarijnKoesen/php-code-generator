@@ -1,10 +1,10 @@
 <?php
 return array(
     'modules' => array(
-        'html\InputGenerator',
-        'html\ClassGenerator',
-        'html\DoctrineGenerator',
-        'html\MapperGenerator',
-        'html\MockGenerator',
+        'codegenerator\generator\InputGenerator',
+        'codegenerator\generator\ClassGenerator',
+        'codegenerator\generator\DoctrineGenerator',
+        'codegenerator\generator\MapperGenerator',
+        'codegenerator\generator\MockGenerator',
     )
 );

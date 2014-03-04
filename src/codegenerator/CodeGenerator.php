@@ -1,7 +1,7 @@
 <?php
 namespace codegenerator;
 
-use model\ClassEntity;
+use codegenerator\model\ClassEntity;
 
 class CodeGenerator
 {
